@@ -13,10 +13,10 @@
             <strong>oculta</strong> de la luna. En este lugar no existen páginas
             <em>por ahora</em>, así que puedes:
           </p>
-          <div class="buttons">
-            <button>Ojo</button>
-            <button>Volver a casa</button>
-            <button>¡Avísame!</button>
+          <div class="buttons">          
+            <Button :click="handleEyeClick" content="Ojo" /> <!-- Funciona con this.handleEyeClick o sin el this -->
+            <Button :click="handleHomeClick" content="Volver a casa" />
+            <Button :click="handleContactClick" content="¡Avísame!" />
           </div>
         </section>
       </div>
@@ -25,8 +25,22 @@
 </template>
 
 <script>
+import Button from "./components/Button";
+
 export default {
   name: "App",
+  components: { Button },
+  methods: {
+    handleEyeClick: () => {
+      console.log("OJO");
+    },
+    handleHomeClick: () => {
+      console.log("Volver a casa");
+    },
+    handleContactClick: () => {
+      console.log("Contactame");
+    },
+  },
 };
 </script>
 
@@ -89,6 +103,11 @@ export default {
 
   .text h2 {
     text-align: start;
+  }
+
+  .image img {
+    height: 200px;
+    margin: 0 30px;
   }
 
   .buttons {
